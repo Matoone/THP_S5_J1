@@ -1,0 +1,23 @@
+<h1>Page de profil de <%= @user.first_name %> <%= @user.last_name %></h1>
+<div class= "user-page">
+  <div class="user-element">
+    <h4 class= "user-page-label">Nom </h4>
+    <p><%= @user.first_name %></p>
+    <h4>Prénom </h4>
+    <p><%= @user.last_name %></p>
+    <h4>Age </h4>
+    <p><%= @user.age %></p>
+    <h4>Email </h4>
+    <p><%= @user.email %></p>
+  </div>
+
+  <div class="user-element">
+    <h4> Description </h4>
+    <%= @user.description %>
+  </div>
+
+  <div class="user-element">
+    <h4>Ville </h4>
+    <%= @user.city.name %>
+  </div>
+</div>

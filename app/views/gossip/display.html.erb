@@ -1,0 +1,25 @@
+<h1>Bienvenue sur le potin n° <%= @id %></h1>
+
+<h4 class= "gossip-label">Auteur</h4>
+<div class= "gossip-author">
+  <%= @gossip.user.first_name %> <%= @gossip.user.last_name %><br>
+  <%= link_to "Accéder à la page de l'auteur", user_path(@gossip.user.id) %>
+</div>
+<h4 class= "gossip-label">Titre</h4>
+<div class= "gossip-title">
+  <%= @gossip.title %>
+</div>
+<h4 class= "gossip-label">Contenu</h4>
+<div class= "gossip-content text-center">
+  <%= @gossip.content %>
+</div>
+<h4 class= "gossip-label">Date de création</h4>
+<div class= "gossip-date text-center">
+  <%= @gossip.created_at.to_formatted_s(:rfc822)  %>
+</div>
+<h4 class= "gossip-label">Tags</h4>
+<div class= "gossip-tag text-center">
+  <% @gossip.tags.each do |tag|  %>
+  <%= tag.title %><br>
+  <% end %>
+</div>

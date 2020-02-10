@@ -1,0 +1,65 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+h1 {
+  text-align: center;
+  margin: 30px;
+  padding: 20px;
+}
+ul {
+  list-style: none;
+}
+
+.index-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.index-element {
+  flex-basis: 250px;
+}
+
+.gossip-author {
+  margin: 10px;
+  text-align: center;
+
+}
+.gossip-element {
+  margin: 30x;
+  padding: 30px;
+}
+.gossip-title {
+margin: 10px;
+
+text-align: center;
+}
+
+.gossip-label {
+  background-color: lightgrey;
+  margin: 10px;
+  text-align: center;
+}
+.user-page {
+  display: flex;
+  flex-direction: row;
+  
+  justify-content: space-around;
+  text-align: center;
+}
+.user-element {
+  margin: 5px;
+  padding: 10px;
+}
