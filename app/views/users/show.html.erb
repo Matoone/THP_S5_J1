@@ -1,23 +1,26 @@
+
+
 <h1>Page de profil de <%= @user.first_name %> <%= @user.last_name %></h1>
-<div class= "user-page">
-  <div class="user-element">
-    <h4 class= "user-page-label">Nom </h4>
-    <p><%= @user.first_name %></p>
-    <h4>Prénom </h4>
-    <p><%= @user.last_name %></p>
-    <h4>Age </h4>
-    <p><%= @user.age %></p>
-    <h4>Email </h4>
-    <p><%= @user.email %></p>
-  </div>
 
-  <div class="user-element">
-    <h4> Description </h4>
-    <%= @user.description %>
+<h4 class= "gossip-label">Identité</h4>
+<div class= "gossip-author d-flex justify-content-around">
+  <div>
+    <%= @user.first_name %> <%= @user.last_name %><br>
   </div>
-
-  <div class="user-element">
-    <h4>Ville </h4>
-    <%= @user.city.name %>
+  <div>
+  Age: <%= @user.age %> <br>
   </div>
+</div>
+<h4 class= "gossip-label">Contact</h4>
+<div class= "gossip-title">
+  Email: <%= @user.email %>
+</div>
+<h4 class= "gossip-label">Description</h4>
+<div class= "gossip-content text-center">
+  <%= @user.description %>
+</div>
+<h4 class= "gossip-label">Ville</h4>
+<div class= "gossip-date text-center">
+  <%= @user.city.name %> <br/>
+  <%= link_to "Accéder à la page de la ville #{@user.city.name}", city_path(@user.city.id) %>
 </div>

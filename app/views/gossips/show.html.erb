@@ -1,9 +1,15 @@
 <h1>Bienvenue sur le potin n° <%= @id %></h1>
 
 <h4 class= "gossip-label">Auteur</h4>
-<div class= "gossip-author">
-  <%= @gossip.user.first_name %> <%= @gossip.user.last_name %><br>
-  <%= link_to "Accéder à la page de l'auteur", user_path(@gossip.user.id) %>
+<div class= "gossip-author d-flex justify-content-around">
+  <div>
+    <%= @gossip.user.first_name %> <%= @gossip.user.last_name %><br>
+    <%= link_to "Accéder à la page de l'auteur", user_path(@gossip.user.id) %>
+  </div>
+  <div>
+  Ville: <%= @gossip.user.city.name %> <br>
+    <%= link_to "Accéder à la page de la ville #{@gossip.user.city.name}", city_path(@gossip.user.city.id) %>
+  </div>
 </div>
 <h4 class= "gossip-label">Titre</h4>
 <div class= "gossip-title">
@@ -22,4 +28,9 @@
   <% @gossip.tags.each do |tag|  %>
   <%= tag.title %><br>
   <% end %>
+</div>
+<h4 class= "gossip-label">Actions</h4>
+<div class= "gossip-tag text-center">
+  <%= link_to "Editer ce potin", edit_gossip_path(@gossip.id), class: "btn btn-primary" %>
+  <%= link_to "Supprimer ce potin", gossip_path(@gossip.id), class: "btn btn-danger", 'data-confirm': "Etes-vous sur?", 'data-method': "DELETE"  %>
 </div>

@@ -1,14 +1,20 @@
-<h1>Bienvenue sur la liste des potins!</h1>
-<% puts "#"*60 %>
-    <%puts params%>
-    <%puts "#"*60 %>
-<% if params["success"] %>
+<div class="jumbotron">
+  <h1 class="display-4">Bienvenue sur la page des potins !</h1>
+  <p class="lead">Vous pouvez consulter tous les potins qui ont été émis par les utilisateurs.</p>
+  <hr class="my-4">
+  <p>Créez maintenant votre propre potin</p>
+  <p class="lead">
+    <%# <a class="btn btn-primary btn-lg" href="#" role="button">Postez un nouveau potin</a> %>
+    <%= button_to "Postez un nouveau potin !", new_gossip_path, :class => "btn btn-primary btn-lg", :method => :get %>
+  </p>
+</div>
+
+<% if flash[:notice] %>
 <div class="alert alert-success" role="alert">
-  Votre potin a bien été enregistré!
+  <%= flash[:notice] %>
 </div>
 <% end%>
 
-<%= link_to "Postez un nouveau potin !", new_gossip_path %>
 <div class= "index-box">
 
 <% @gossips.each do |gossip|%>
