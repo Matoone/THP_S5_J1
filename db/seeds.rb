@@ -12,6 +12,7 @@ City.destroy_all
 Gossip.destroy_all
 Tag.destroy_all
 PrivateMessage.destroy_all
+Comment.destroy_all
 
 users = []
 10.times do
@@ -72,4 +73,9 @@ senders = []
    pm.save
 
    puts "Private message #{i} added"
+end
+
+20.times do |i|
+  comment = Comment.create!(content: Faker::Lorem.paragraphs.join(' '), author: User.all.sample, gossip: Gossip.all.sample)
+  puts "Comment #{i} added"
 end

@@ -18,8 +18,11 @@
       <label>Contenu de l'article</label>
       <%= f.text_area :content, class: "form-control", placeholder: "#{@gossip.content}" %>
     </div>
+    <%= label_tag 'Ajouter un Tag'%>
+    <%= select_tag "tag", options_from_collection_for_select(@tags, "id", "title"), include_blank: true %>
     <div class= "form-group">
       <button type= "submit" class="btn btn-primary">Modifier le gossip</button>
     </div>
+    
     <% end %>
 </div>

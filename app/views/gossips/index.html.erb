@@ -25,6 +25,7 @@
     <h5 class="card-title text-center"><%= gossip.title %></h5>
     <h6 class="card-subtitle mb-2 text-muted text-center"><%= gossip.user.first_name %> <%= gossip.user.last_name %></h6>
     <p class="card-text text-left"><%= gossip.content %></p>
+    <p>Nombre de commentaires: <%= gossip.comments.length %></p>
     <div class= "mt-auto">
     <div class= "card-link text-center"><%= link_to "Accéder à la page du gossip", gossip_path(gossip.id) %></div>
     <div class= "card-link text-center"><%= link_to "Accéder à la page de l'auteur", user_path(gossip.user.id) %></div>
