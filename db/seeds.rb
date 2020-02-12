@@ -19,9 +19,12 @@ users = []
   users.push(user)
 end
 
+anonymous_user = {first_name: "anonymous", last_name: "anonymous", description: Faker::Lorem.paragraph, email: Faker::Internet.email, age: Faker::Number.between(from: 14, to: 100).to_i }
+users.push(anonymous_user)
+
 cities = []
-10.times do
-  city = {name: Faker::Address.city, zip_code: Faker::Address.zip_code}
+users.length.times do
+  city = {name: Faker::Address.city, zip_code: format('%02d', rand(1..95)).to_s + Faker::Number.decimal_part(digits: 3).to_s }
   cities.push(city)
 end
 
@@ -34,7 +37,7 @@ users.each_with_index do |user, index|
 end
 gossips = []
 20.times do |i|
-  gossip = Gossip.new({title: Faker::Book.title, content: Faker::Lorem.paragraphs.join(' '), user: User.all.sample})
+  gossip = Gossip.new({title: Faker::Lorem.characters(number: 10), content: Faker::Lorem.paragraphs.join(' '), user: User.all.sample})
   gossip.save
   gossips.push(gossip)
   puts "#{i} gossips generated."

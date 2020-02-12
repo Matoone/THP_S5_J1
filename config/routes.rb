@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   get '/team', to: 'static_pages#team'
   get '/contact', to: 'static_pages#contact'
   get '/welcome/:first_name', to: 'welcome#user', as: 'welcome'
-  get '/gossip/:id', to: 'gossip#display', as: 'gossip'
-  get '/user/:id', to: 'user#display', as: 'user'
+  resources :gossips
+  resources :users
 end
