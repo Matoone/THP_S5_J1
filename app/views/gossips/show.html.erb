@@ -76,6 +76,8 @@
 </div>
 <h4 class= "gossip-label">Actions</h4>
 <div class= "gossip-tag text-center">
+ <% if @gossip.user.id == current_user.id%>
   <%= link_to "Editer ce potin", edit_gossip_path(@gossip.id), class: "btn btn-primary" %>
   <%= link_to "Supprimer ce potin", gossip_path(@gossip.id), class: "btn btn-danger", 'data-confirm': "Etes-vous sur?", 'data-method': "DELETE"  %>
+  <% end %>
 </div>
