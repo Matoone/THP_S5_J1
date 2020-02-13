@@ -13,6 +13,7 @@ Gossip.destroy_all
 Tag.destroy_all
 PrivateMessage.destroy_all
 Comment.destroy_all
+Like.destroy_all
 
 users = []
 10.times do
@@ -78,4 +79,11 @@ end
 20.times do |i|
   comment = Comment.create!(content: Faker::Lorem.paragraphs.join(' '), author: User.all.sample, gossip: Gossip.all.sample)
   puts "Comment #{i} added"
+end
+
+20.times do |i|
+  like = Like.create!(user: User.all.sample, writable: Gossip.all.sample)
+end
+20.times do |i|
+  like = Like.create!(user: User.all.sample, writable: Comment.all.sample)
 end

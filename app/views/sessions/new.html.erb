@@ -6,6 +6,20 @@
       </div>
 <% end %>
 
+<% if @errors%>
+  <% @errors.messages.each do |message|%>
+  <div class="alert alert-danger" role="alert">
+  Le champ <%= message[0] %> a le problème suivant: <%= message[1][0] %>
+  </div>
+    <% end%>
+  <% end %>
+
+  <% if @authentification_error %>
+  <div class="alert alert-danger" role="alert">
+    <%= @authentification_error %> 
+  </div>
+  <% end %>
+
 <%= form_with(url: "/sessions", method: "post") do |f|%>
   <%= label_tag(:email) %>
   <%= f.email_field :email, class: 'form-control', autofocus: true, placeholder:'email@email.com' %>

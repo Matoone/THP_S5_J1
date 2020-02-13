@@ -9,11 +9,11 @@
   </p>
 </div>
 
-<% if flash[:notice] %>
-<div class="alert alert-success" role="alert">
-  <%= flash[:notice] %>
-</div>
-<% end%>
+<% flash.each do |key, value| %>
+      <div class="<%= flash_class(key) %>" role="alert">
+            <%= value %>
+      </div>
+<% end %>
 
 <div class= "index-box">
 
@@ -26,6 +26,19 @@
     <h6 class="card-subtitle mb-2 text-muted text-center"><%= gossip.user.first_name %> <%= gossip.user.last_name %></h6>
     <p class="card-text text-left"><%= gossip.content %></p>
     <p>Nombre de commentaires: <%= gossip.comments.length %></p>
+    <p>Likes : <%= gossip.likes.length %></p>
+    <% if current_user %>
+        <% if !gossip.likes.any? { |like| like.user == current_user}%>
+        <%= link_to new_like_path :id => gossip.id do %>
+        <i class="far fa-thumbs-up"></i>
+        <% end %>
+      <% else %>
+      <% own_ar = gossip.likes.select { |like| like.user == current_user }%>
+      <%= link_to "/likes/#{own_ar[0].id}", controller: "likes", action: "destroy", method: "delete", :id => gossip.id do %>
+        <i class="fas fa-thumbs-up"></i>
+        <% end %>
+      <% end %>
+    <% end %>
     <div class= "mt-auto">
     <div class= "card-link text-center "><%= link_to "Page du gossip", gossip_path(gossip.id), class: 'btn btn-outline-primary' %></div>
     <div style = "margin-left: 0px"class= "card-link text-center"><%= link_to "Page de l'auteur", user_path(gossip.user.id), class: 'btn btn-outline-secondary' %></div>
