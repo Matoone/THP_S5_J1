@@ -27,8 +27,8 @@
     <p class="card-text text-left"><%= gossip.content %></p>
     <p>Nombre de commentaires: <%= gossip.comments.length %></p>
     <div class= "mt-auto">
-    <div class= "card-link text-center"><%= link_to "Accéder à la page du gossip", gossip_path(gossip.id) %></div>
-    <div class= "card-link text-center"><%= link_to "Accéder à la page de l'auteur", user_path(gossip.user.id) %></div>
+    <div class= "card-link text-center "><%= link_to "Page du gossip", gossip_path(gossip.id), class: 'btn btn-outline-primary' %></div>
+    <div style = "margin-left: 0px"class= "card-link text-center"><%= link_to "Page de l'auteur", user_path(gossip.user.id), class: 'btn btn-outline-secondary' %></div>
     </div>
   </div>
 </div>

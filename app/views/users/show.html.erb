@@ -19,8 +19,10 @@
 <div class= "gossip-content text-center">
   <%= @user.description %>
 </div>
+<% if @user.city %>
 <h4 class= "gossip-label">Ville</h4>
 <div class= "gossip-date text-center">
   <%= @user.city.name %> <br/>
   <%= link_to "Accéder à la page de la ville #{@user.city.name}", city_path(@user.city.id) %>
 </div>
+<% end %>

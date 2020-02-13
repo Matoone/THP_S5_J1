@@ -16,11 +16,11 @@ Comment.destroy_all
 
 users = []
 10.times do
-  user = {first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.paragraph, email: Faker::Internet.email, age: Faker::Number.between(from: 14, to: 100).to_i}
+  user = {first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.paragraph, email: Faker::Internet.email, age: Faker::Number.between(from: 14, to: 100).to_i, password: "defaultpassword"}
   users.push(user)
 end
 
-anonymous_user = {first_name: "anonymous", last_name: "anonymous", description: Faker::Lorem.paragraph, email: Faker::Internet.email, age: Faker::Number.between(from: 14, to: 100).to_i }
+anonymous_user = {first_name: "anonymous", last_name: "anonymous", description: Faker::Lorem.paragraph, email: Faker::Internet.email, age: Faker::Number.between(from: 14, to: 100).to_i, password: "defaultpassword" }
 users.push(anonymous_user)
 
 cities = []

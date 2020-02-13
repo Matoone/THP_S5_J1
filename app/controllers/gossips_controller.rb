@@ -9,15 +9,23 @@ class GossipsController < ApplicationController
   end
 
   def new
+    if !current_user
+      flash[:alert] = "Vous devez vous connecter avant de poster un potin."
+      redirect_to new_session_path
+    end
     @tags = Tag.all.to_a
   end
 
   def create
+    if !current_user
+      flash[:alert] = "Vous devez vous connecter avant de poster un potin."
+      redirect_to new_session_path
+    end
     title = params["title"]
     content = params["content"]
     tagID = params["tag"]
-    anonymous_user = User.find_by(first_name: "anonymous")
-    @gossip = Gossip.new(title: title, content: content, user: anonymous_user)
+    user= current_user
+    @gossip = Gossip.new(title: title, content: content, user: user)
     if tagID != nil && tagID != ""
       @gossip.tags.push(Tag.find(tagID))
     end
