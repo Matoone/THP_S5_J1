@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :new, :create]
   resources :cities, only: [:index, :show]
   resources :sessions, only: [:new, :create, :destroy]
+  resources :comments, only: [:new, :create, :destroy, :edit, :update]
 end

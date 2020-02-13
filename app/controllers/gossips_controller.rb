@@ -1,4 +1,5 @@
 class GossipsController < ApplicationController
+  before_action :authenticate_user, only: [:new, :create, :show, :edit, :update, :destroy]
   def index
     @gossips = Gossip.all
     
@@ -9,18 +10,12 @@ class GossipsController < ApplicationController
   end
 
   def new
-    if !current_user
-      flash[:alert] = "Vous devez vous connecter avant de poster un potin."
-      redirect_to new_session_path
-    end
+    
     @tags = Tag.all.to_a
   end
 
   def create
-    if !current_user
-      flash[:alert] = "Vous devez vous connecter avant de poster un potin."
-      redirect_to new_session_path
-    end
+  
     title = params["title"]
     content = params["content"]
     tagID = params["tag"]
@@ -39,12 +34,14 @@ class GossipsController < ApplicationController
   end
 
   def edit
+  
     @id = params["id"]
     @tags = Tag.all.to_a
     @gossip = Gossip.find(@id)
   end
 
   def update
+    
     @gossip = Gossip.find(params[:id])
     gossip_params = params.require(:gossip).permit(:title, :content)
     tagID = params["tag"]
@@ -62,9 +59,20 @@ class GossipsController < ApplicationController
   end
 
   def destroy
+    
     @gossip = Gossip.find(params[:id])
     @gossip.destroy
     flash[:notice] = "Votre gossip a bien été supprimé."
       redirect_to gossips_path
+  end
+
+
+  private
+
+  def authenticate_user
+    unless current_user
+      flash[:alert] = "Vous devez vous connecter pour avoir accès à cette section."
+      redirect_to new_session_path
+    end
   end
 end

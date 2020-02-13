@@ -30,8 +30,13 @@
   <div>
     Posté le <%= comment.created_at%> par <%= link_to "#{comment.author.first_name} #{comment.author.last_name}", user_path(comment.author.id)%> 
     <p>  <%= comment.content %></p>
+    <% if comment.author.id == current_user.id%>
+    <%= link_to "Editer ce commentaire", edit_comment_path(comment.id), method: 'get', action: "edit", class: "btn btn-primary" %>
+    <%= link_to "Supprimer ce commentaire", comment_path(comment.id), method: 'delete', class: " btn btn-danger", 'data-confirm': "Etes-vous sur?" %>
+    <% end %>
   </div>
 <% end %>
+<%= link_to 'Commenter', new_comment_path(gossip_id: "#{@gossip.id}"), class: "btn btn-success"%> 
 
 <h4 class= "gossip-label">Tags</h4>
 <div class= "gossip-tag text-center">
