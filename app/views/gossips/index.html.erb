@@ -29,12 +29,12 @@
     <p>Likes : <%= gossip.likes.length %></p>
     <% if current_user %>
         <% if !gossip.likes.any? { |like| like.user == current_user}%>
-        <%= link_to new_like_path :id => gossip.id do %>
+        <%= link_to new_like_path(:id => gossip.id, :index => "true") do %>
         <i class="far fa-thumbs-up"></i>
         <% end %>
       <% else %>
       <% own_ar = gossip.likes.select { |like| like.user == current_user }%>
-      <%= link_to "/likes/#{own_ar[0].id}", controller: "likes", action: "destroy", method: "delete", :id => gossip.id do %>
+      <%= link_to like_path(id: "#{own_ar[0].id}", index: "true"), action: "destroy", method: "delete" do %>
         <i class="fas fa-thumbs-up"></i>
         <% end %>
       <% end %>

@@ -48,6 +48,18 @@
     Posté le <%= comment.created_at%> par <%= link_to "#{comment.author.first_name} #{comment.author.last_name}", user_path(comment.author.id)%> 
     <p>  <%= comment.content %></p>
     <p> <%= comment.likes.length %> Utilisateurs aiment ça.</p>
+    <% if current_user %>
+        <% if !comment.likes.any? { |like| like.user == current_user}%>
+        <%= link_to new_like_path(:id => comment.id, :comment => "true") do %>
+        <i class="far fa-thumbs-up"></i>
+        <% end %>
+      <% else %>
+      <% own_ar = comment.likes.select { |like| like.user == current_user }%>
+      <%= link_to like_path(id: "#{own_ar[0].id}", comment: "true"), action: "destroy", method: "delete" do %>
+        <i class="fas fa-thumbs-up"></i>
+        <% end %>
+      <% end %>
+    <% end %>
     <% if comment.author.id == current_user.id%>
     <%= link_to "Editer ce commentaire", edit_comment_path(comment.id), method: 'get', action: "edit", class: "btn btn-primary" %>
     <%= link_to "Supprimer ce commentaire", comment_path(comment.id), method: 'delete', class: " btn btn-danger", 'data-confirm': "Etes-vous sur?" %>
