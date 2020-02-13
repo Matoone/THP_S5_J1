@@ -14,3 +14,10 @@ Ce programme consiste en gros à te faire ajouter les controllers et les vues au
   - $rails db:seed to get example seeds
   - $rails server to launch the server
   - Go to localhost:3000 on your browser
+
+* Use instructions
+  - Use with internet connection to be able to use the like system
+  - You can create your account with the sign up tab
+  - Then you should be logged in ...
+  - And you can create stupid gossips, modify and delete them, comment, modify and delete the comments
+  - And use the stupid like system (coded with feet this time...)
