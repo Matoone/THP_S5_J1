@@ -13,7 +13,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:notice] = "Votre profil a bien été créé. Vous êtes à présent connecté."
-      session[:user_id] = User.find(@user.id).id
+      log_in(@user)
+      remember(@user)
       redirect_to gossips_path
     else
      @errors = @user.errors

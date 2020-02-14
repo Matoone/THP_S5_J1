@@ -7,8 +7,9 @@ class SessionsController < ApplicationController
     # user_data = params.permit(:email, :password)
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      puts "#"*60
+      log_in(user)
+      
+      remember(user)
       flash[:success] = "Vous êtes bien identifié."
       redirect_to gossips_path
     else
@@ -19,7 +20,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session.delete(:user_id)
+    log_out(current_user)
     flash[:success] = "Vous êtes déconnecté."
     redirect_to gossips_path
   end

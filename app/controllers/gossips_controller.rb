@@ -1,5 +1,6 @@
 class GossipsController < ApplicationController
-  before_action :authenticate_user, only: [:new, :create, :show, :edit, :update, :destroy]
+  before_action :autolog_user
+  before_action :authenticate_user, only: [:create, :show, :edit, :update, :destroy]
   def index
     @gossips = Gossip.all
     
@@ -74,5 +75,9 @@ class GossipsController < ApplicationController
       flash[:alert] = "Vous devez vous connecter pour avoir accès à cette section."
       redirect_to new_session_path
     end
+  end
+
+  def autolog_user
+    current_user
   end
 end
