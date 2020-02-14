@@ -17,15 +17,20 @@
  body, .nav { 
   background: url('concrete-texture.png')repeat 0 0;
 }
-.card {
-  background: url('cream_dust.png') repeat 0 0;
+
+.card-body:hover{
+  background-color: rgba(235, 235, 235, 0.925)!important ;
 }
 a.nav-link, a.nav-item {
   color: #E54749;
   text-decoration: none; 
 }
 .btn-outline-primary, .btn-outline-secondary {
-  background-color: rgb(237, 238, 227)!important; 
+  background-color: rgb(199, 199, 198)!important; 
+}
+.btn-outline-primary:hover, .btn-outline-secondary:hover {
+  color: black!important;
+  background-color: #E54749!important;
 }
  h1, h2, h3, h4, h5, h6 {
   font-family: 'Corben', Georgia, Times, serif;
